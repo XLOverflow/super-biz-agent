@@ -1,0 +1,37 @@
+.buildpath
+.hgignore.swp
+.project
+.orig
+.swp
+.idea/
+.settings/
+.vscode/
+bin/
+**/.DS_Store
+gf
+main
+main.exe
+output/
+manifest/output/
+temp/
+temp.yaml
+bin
+
+manifest/docker/volumes
+
+# Analysis report (private)
+SuperBizAgent_分析报告.md
+
+# Environment & secrets
+.env
+*.env
+
+# SQLite database
+*.db
+*.db-journal
+
+# Node modules (frontend)
+SuperBizAgentFrontend/node_modules/
+
+# Claude
+.claude/
