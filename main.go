@@ -11,9 +11,11 @@ import (
 	"github.com/gogf/gf/v2/frame/g"
 	"github.com/gogf/gf/v2/net/ghttp"
 	"github.com/gogf/gf/v2/os/gctx"
+	"github.com/joho/godotenv"
 )
 
 func main() {
+	_ = godotenv.Load() // 加载 .env（文件不存在时忽略，生产环境可直接注入环境变量）
 	ctx := gctx.New()
 	fileDir, err := g.Cfg().Get(ctx, "file_dir")
 	if err != nil {

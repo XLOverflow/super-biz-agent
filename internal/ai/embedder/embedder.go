@@ -3,6 +3,7 @@ package embedder
 import (
 	"context"
 	"log"
+	"os"
 
 	"github.com/cloudwego/eino-ext/components/embedding/dashscope"
 	"github.com/cloudwego/eino/components/embedding"
@@ -20,8 +21,8 @@ func DoubaoEmbedding(ctx context.Context) (eb embedding.Embedder, err error) {
 	}
 	dim := 2048
 	embedder, err := dashscope.NewEmbedder(ctx, &dashscope.EmbeddingConfig{
-		Model:      model.String(),
-		APIKey:     api_key.String(),
+		Model:      os.ExpandEnv(model.String()),
+		APIKey:     os.ExpandEnv(api_key.String()),
 		Dimensions: &dim,
 	})
 	if err != nil {

@@ -14,9 +14,11 @@ import (
 
 	"github.com/cloudwego/eino/components/document"
 	"github.com/cloudwego/eino/compose"
+	"github.com/joho/godotenv"
 )
 
 func main() {
+	_ = godotenv.Load("../../../.env") // 加载项目根目录的 .env
 	ctx := context.Background()
 	r, err := knowledge_index_pipeline.BuildKnowledgeIndexing(ctx)
 	if err != nil {

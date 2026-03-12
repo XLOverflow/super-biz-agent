@@ -20,9 +20,9 @@ https://mcp-go.dev/clients
 */
 func GetLogMcpTool() ([]tool.BaseTool, error) {
 	// https://mcp-api.tencent-cloud.com/sse/XXXX
-	mcp_url := "填在这里"
+	mcp_url := ""
 	if mcp_url == "" {
-		panic("要使用GetLogMcpTool，请先按照教程申请mcp url")
+		return []tool.BaseTool{}, nil
 	}
 	ctx := context.Background()
 	cli, err := client.NewSSEMCPClient(mcp_url)

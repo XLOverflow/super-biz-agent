@@ -17,6 +17,10 @@ temp/
 temp.yaml
 bin
 
+# Compiled binaries
+/SuperBizAgent
+/knowledge_cmd
+
 manifest/docker/volumes
 
 # Analysis report (private)

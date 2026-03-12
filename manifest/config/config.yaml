@@ -9,21 +9,22 @@ logger:
   level: "all"
   stdout: true
 
+# Think 模型：用于复杂规划（plan_execute_replan），建议配 DeepSeek-R1
 ds_think_chat_model:
-  api_key: "xxxxxx"
-  base_url: "https://ark.cn-beijing.volces.com/api/v3"
-  model: "deepseek-v3-1-terminus"
+  api_key: "${DS_THINK_API_KEY}"
+  base_url: "${DS_THINK_BASE_URL}"
+  model: "${DS_THINK_MODEL}"
 
+# Quick 模型：用于普通对话和任务执行，建议配 DeepSeek-V3
 ds_quick_chat_model:
-  api_key: "xxxxxx"
-  base_url: "https://ark.cn-beijing.volces.com/api/v3"
-  model: "deepseek-v3-1-terminus"
+  api_key: "${DS_QUICK_API_KEY}"
+  base_url: "${DS_QUICK_BASE_URL}"
+  model: "${DS_QUICK_MODEL}"
 
+# 阿里云百炼 Embedding
 doubao_embedding_model:
-  api_key: "这里使用阿里百炼的api"
-  base_url: "https://dashscope.aliyuncs.com/compatible-mode/v1"
-  model: "text-embedding-v4"
+  api_key: "${DASHSCOPE_API_KEY}"
+  base_url: "${DASHSCOPE_BASE_URL}"
+  model: "${DASHSCOPE_EMBEDDING_MODEL}"
 
-file_dir: "/你的路径/SuperBizAgent/internal/ai/cmd/knowledge_cmd/docs"
-
-
+file_dir: "${FILE_DIR}"
