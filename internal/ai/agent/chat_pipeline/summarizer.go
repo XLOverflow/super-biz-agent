@@ -1,7 +1,7 @@
 package chat_pipeline
 
 import (
-	"SuperBizAgent/utility/mem"
+	"SecOpsAgent/utility/mem"
 	"context"
 
 	"github.com/cloudwego/eino/schema"

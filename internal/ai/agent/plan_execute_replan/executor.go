@@ -1,8 +1,8 @@
 package plan_execute_replan
 
 import (
-	"SuperBizAgent/internal/ai/models"
-	"SuperBizAgent/internal/ai/tools"
+	"SecOpsAgent/internal/ai/models"
+	"SecOpsAgent/internal/ai/tools"
 	"context"
 
 	"github.com/cloudwego/eino/adk"
@@ -11,16 +11,20 @@ import (
 )
 
 func NewExecutor(ctx context.Context) (adk.Agent, error) {
-	// log
+	// log (MCP)
 	mcpTool, err := tools.GetLogMcpTool()
 	if err != nil {
 		return nil, err
 	}
 	toolList := mcpTool
-	// alerts
-	toolList = append(toolList, tools.NewPrometheusAlertsQueryTool())
-	// file
-	toolList = append(toolList, tools.NewQueryInternalDocsTool())
+	// security alerts
+	toolList = append(toolList, tools.NewSecurityAlertsQueryTool())
+	// security playbook
+	toolList = append(toolList, tools.NewQuerySecurityPlaybookTool())
+	// firewall logs
+	toolList = append(toolList, tools.NewQueryFirewallLogsTool())
+	// security events db
+	toolList = append(toolList, tools.NewQuerySecurityEventsTool())
 	// time
 	toolList = append(toolList, tools.NewGetCurrentTimeTool())
 	execModel, err := models.OpenAIForDeepSeekV3Quick(ctx)

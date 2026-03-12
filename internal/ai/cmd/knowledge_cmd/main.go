@@ -1,11 +1,11 @@
 package main
 
 import (
-	"SuperBizAgent/internal/ai/agent/knowledge_index_pipeline"
-	loader2 "SuperBizAgent/internal/ai/loader"
-	"SuperBizAgent/utility/client"
-	"SuperBizAgent/utility/common"
-	"SuperBizAgent/utility/log_call_back"
+	"SecOpsAgent/internal/ai/agent/knowledge_index_pipeline"
+	loader2 "SecOpsAgent/internal/ai/loader"
+	"SecOpsAgent/utility/client"
+	"SecOpsAgent/utility/common"
+	"SecOpsAgent/utility/log_call_back"
 	"context"
 	"fmt"
 	"io/fs"

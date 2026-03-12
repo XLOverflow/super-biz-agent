@@ -1,10 +1,10 @@
 package indexer
 
 import (
-	"SuperBizAgent/internal/ai/bm25"
-	embedder2 "SuperBizAgent/internal/ai/embedder"
-	"SuperBizAgent/utility/client"
-	"SuperBizAgent/utility/common"
+	"SecOpsAgent/internal/ai/bm25"
+	embedder2 "SecOpsAgent/internal/ai/embedder"
+	"SecOpsAgent/utility/client"
+	"SecOpsAgent/utility/common"
 	"context"
 	"encoding/json"
 	"fmt"

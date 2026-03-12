@@ -35,6 +35,16 @@ type MessageRecord struct {
 	CreatedAt time.Time `gorm:"not null"`
 }
 
+// Close 关闭底层 SQLite 连接，用于优雅关停时释放资源
+func Close() {
+	if globalDB != nil {
+		sqlDB, err := globalDB.DB()
+		if err == nil {
+			sqlDB.Close()
+		}
+	}
+}
+
 func getDB() (*gorm.DB, error) {
 	dbOnce.Do(func() {
 		db, err := gorm.Open(sqlite.Open("agent_memory.db"), &gorm.Config{

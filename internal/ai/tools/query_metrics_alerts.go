@@ -101,11 +101,11 @@ func calculateDuration(activeAtStr string) string {
 	}
 }
 
-// NewPrometheusAlertsQueryTool 创建Prometheus告警查询工具
-func NewPrometheusAlertsQueryTool() tool.InvokableTool {
+// NewSecurityAlertsQueryTool 创建安全告警查询工具（IDS/IPS/WAF/防火墙告警）
+func NewSecurityAlertsQueryTool() tool.InvokableTool {
 	t, err := utils.InferOptionableTool(
-		"query_prometheus_alerts",
-		"Query active alerts from Prometheus alerting system. This tool retrieves all currently active/firing alerts including their labels, annotations, state, and values. Use this tool when you need to check what alerts are currently firing, investigate alert conditions, or monitor alert status.",
+		"query_security_alerts",
+		"查询当前活跃的安全告警，包括 IDS/IPS 入侵检测告警、WAF Web攻击告警、防火墙策略违规告警等。返回告警名称、威胁描述、状态、激活时间和持续时长。用于安全事件响应的第一步：了解当前安全态势。",
 		func(ctx context.Context, input *struct{}, opts ...tool.Option) (output string, err error) {
 			log.Printf("Querying Prometheus active alerts")
 

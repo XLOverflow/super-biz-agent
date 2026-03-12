@@ -1,27 +1,34 @@
 package chat
 
 import (
-	"SuperBizAgent/api/chat/v1"
-	"SuperBizAgent/internal/ai/agent/plan_execute_replan"
+	"SecOpsAgent/api/chat/v1"
+	"SecOpsAgent/internal/ai/agent/plan_execute_replan"
 	"context"
 	"errors"
 )
 
 func (c *ControllerV1) AIOps(ctx context.Context, req *v1.AIOpsReq) (res *v1.AIOpsRes, err error) {
 	query := `
-"1. 你是一个智能的服务告警分析助手,首先调用工具query_prometheus_alerts获取所有活跃的告警。"
-"2. 分别根据告警的名称调用工具query_internal_docs，获取告警名对应的处理方案。"
-"3. 完全遵循内部文档的内容进行查询和分析,不允许使用文档外的任何信息。"
-"4. 涉及到时间的参数都需要先通过工具get_current_time获取当前时间,再结合工具的时间要求进行传参。"
-"5. 涉及到日志的查询,需要先通过日志工具获取相关日志信息，参数必须携带地域和日志主题。"
-"6. 分别将告警对应查询到的信息进行总结分析,最后生成告警运维分析报告，格式如下：
-告警分析报告
+"1. 你是天融信SOC的安全事件响应助手。首先调用工具 query_security_alerts 获取所有活跃的安全告警。"
+"2. 针对每个告警，调用工具 query_security_playbook 检索对应的安全处置 Playbook。"
+"3. 严格遵循内部安全 Playbook 的处置流程，不使用文档外的任何处置建议。"
+"4. 涉及时间参数时，先通过 get_current_time 获取当前时间，再进行时间范围计算。"
+"5. 如需查询防火墙日志，调用 query_firewall_logs 获取相关流量日志，分析攻击源IP、目标端口和动作。"
+"6. 综合告警信息、Playbook、日志分析结果，生成安全事件响应报告，格式如下：
+安全事件响应报告
 ---
-# 告警处理详情
-## 活跃告警清单
-## 告警根因分析N(第N个告警)
-## 处理方案执行N(第N个告警)
-## 结论
+# 事件概览
+## 活跃安全告警清单（含威胁等级P0-P3）
+## 威胁分析N（第N个告警）
+  - 攻击向量与MITRE ATT&CK映射
+  - 影响范围评估
+  - 关联IOC指标（IP/域名/哈希）
+## 处置执行N（第N个告警）
+  - 已执行的自动化处置步骤
+  - 需人工介入的处置项
+## 总结与建议
+  - 整体安全态势评估
+  - 后续加固建议
 `
 
 	resp, detail, err := plan_execute_replan.BuildPlanAgent(ctx, query)

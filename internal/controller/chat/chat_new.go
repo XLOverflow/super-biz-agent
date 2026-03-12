@@ -5,8 +5,8 @@
 package chat
 
 import (
-	"SuperBizAgent/api/chat"
-	"SuperBizAgent/internal/logic/sse"
+	"SecOpsAgent/api/chat"
+	"SecOpsAgent/internal/logic/sse"
 )
 
 type ControllerV1 struct {

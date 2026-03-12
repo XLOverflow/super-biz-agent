@@ -1,7 +1,7 @@
 package chat_pipeline
 
 import (
-	"SuperBizAgent/internal/ai/tools"
+	"SecOpsAgent/internal/ai/tools"
 	"context"
 
 	"github.com/cloudwego/eino/components/tool"
@@ -13,9 +13,10 @@ func buildTools(_ context.Context) ([]tool.BaseTool, error) {
 		return nil, err
 	}
 	toolList := mcpTool
-	toolList = append(toolList, tools.NewPrometheusAlertsQueryTool())
-	toolList = append(toolList, tools.NewMysqlCrudTool())
+	toolList = append(toolList, tools.NewSecurityAlertsQueryTool())
+	toolList = append(toolList, tools.NewQuerySecurityPlaybookTool())
+	toolList = append(toolList, tools.NewQuerySecurityEventsTool())
+	toolList = append(toolList, tools.NewQueryFirewallLogsTool())
 	toolList = append(toolList, tools.NewGetCurrentTimeTool())
-	toolList = append(toolList, tools.NewQueryInternalDocsTool())
 	return toolList, nil
 }

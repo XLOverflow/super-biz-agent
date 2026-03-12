@@ -1,8 +1,8 @@
 package main
 
 import (
-	"SuperBizAgent/internal/ai/agent/chat_pipeline"
-	"SuperBizAgent/utility/mem"
+	"SecOpsAgent/internal/ai/agent/chat_pipeline"
+	"SecOpsAgent/utility/mem"
 	"context"
 	"fmt"
 

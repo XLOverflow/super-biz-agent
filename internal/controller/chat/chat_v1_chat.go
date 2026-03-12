@@ -1,9 +1,9 @@
 package chat
 
 import (
-	"SuperBizAgent/api/chat/v1"
-	"SuperBizAgent/internal/ai/agent/chat_pipeline"
-	"SuperBizAgent/utility/mem"
+	"SecOpsAgent/api/chat/v1"
+	"SecOpsAgent/internal/ai/agent/chat_pipeline"
+	"SecOpsAgent/utility/mem"
 	"context"
 	"errors"
 

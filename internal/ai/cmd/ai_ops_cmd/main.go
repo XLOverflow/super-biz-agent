@@ -1,7 +1,7 @@
 package main
 
 import (
-	"SuperBizAgent/internal/ai/agent/plan_execute_replan"
+	"SecOpsAgent/internal/ai/agent/plan_execute_replan"
 	"context"
 	"fmt"
 )

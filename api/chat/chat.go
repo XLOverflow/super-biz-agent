@@ -7,7 +7,7 @@ package chat
 import (
 	"context"
 
-	"SuperBizAgent/api/chat/v1"
+	"SecOpsAgent/api/chat/v1"
 )
 
 type IChatV1 interface {

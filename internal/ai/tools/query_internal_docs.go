@@ -1,7 +1,7 @@
 package tools
 
 import (
-	"SuperBizAgent/internal/ai/retriever"
+	"SecOpsAgent/internal/ai/retriever"
 	"context"
 	"encoding/json"
 	"fmt"
@@ -10,15 +10,15 @@ import (
 	"github.com/cloudwego/eino/components/tool/utils"
 )
 
-type QueryInternalDocsInput struct {
-	Query string `json:"query" jsonschema:"description=The query string to search in internal documentation for relevant information and processing steps"`
+type QuerySecurityPlaybookInput struct {
+	Query string `json:"query" jsonschema:"description=安全事件关键词或告警名称，用于检索对应的安全处置Playbook和应急响应流程"`
 }
 
-func NewQueryInternalDocsTool() tool.InvokableTool {
+func NewQuerySecurityPlaybookTool() tool.InvokableTool {
 	t, err := utils.InferOptionableTool(
-		"query_internal_docs",
-		"Use this tool to search internal documentation and knowledge base for relevant information. It performs RAG (Retrieval-Augmented Generation) to find similar documents and extract processing steps. This is useful when you need to understand internal procedures, best practices, or step-by-step guides stored in the company's documentation.",
-		func(ctx context.Context, input *QueryInternalDocsInput, opts ...tool.Option) (string, error) {
+		"query_security_playbook",
+		"检索内部安全Playbook和应急响应知识库。基于 RAG 混合检索（向量语义 + BM25关键词）查找与安全事件匹配的处置流程、应急响应手册、加固方案等。当需要了解某类安全事件的标准处置步骤时使用此工具。",
+		func(ctx context.Context, input *QuerySecurityPlaybookInput, opts ...tool.Option) (string, error) {
 			rr, err := retriever.NewHybridRetriever(ctx)
 			if err != nil {
 				return "", fmt.Errorf("failed to create retriever: %w", err)

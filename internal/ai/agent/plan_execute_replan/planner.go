@@ -1,7 +1,7 @@
 package plan_execute_replan
 
 import (
-	"SuperBizAgent/internal/ai/models"
+	"SecOpsAgent/internal/ai/models"
 	"context"
 
 	"github.com/cloudwego/eino/adk"

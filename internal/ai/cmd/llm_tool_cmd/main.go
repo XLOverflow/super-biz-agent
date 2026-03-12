@@ -1,7 +1,7 @@
 package main
 
 import (
-	tools2 "SuperBizAgent/internal/ai/tools"
+	tools2 "SecOpsAgent/internal/ai/tools"
 	"context"
 	"fmt"
 

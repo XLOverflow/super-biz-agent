@@ -1,7 +1,7 @@
 package knowledge_index_pipeline
 
 import (
-	indexer2 "SuperBizAgent/internal/ai/indexer"
+	indexer2 "SecOpsAgent/internal/ai/indexer"
 	"context"
 
 	"github.com/cloudwego/eino/components/indexer"

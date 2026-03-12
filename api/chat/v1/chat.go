@@ -5,9 +5,9 @@ import (
 )
 
 type ChatReq struct {
-	g.Meta   `path:"/chat" method:"post" summary:"对话"`
-	Id       string
-	Question string
+	g.Meta   `path:"/chat" method:"post" summary:"安全咨询对话"`
+	Id       string `json:"id" v:"required|length:1,64" dc:"会话ID"`
+	Question string `json:"question" v:"required|length:1,4096" dc:"用户提问内容"`
 }
 
 type ChatRes struct {
@@ -15,16 +15,16 @@ type ChatRes struct {
 }
 
 type ChatStreamReq struct {
-	g.Meta   `path:"/chat_stream" method:"post" summary:"流式对话"`
-	Id       string
-	Question string
+	g.Meta   `path:"/chat_stream" method:"post" summary:"流式安全咨询对话"`
+	Id       string `json:"id" v:"required|length:1,64" dc:"会话ID"`
+	Question string `json:"question" v:"required|length:1,4096" dc:"用户提问内容"`
 }
 
 type ChatStreamRes struct {
 }
 
 type FileUploadReq struct {
-	g.Meta `path:"/upload" method:"post" mime:"multipart/form-data" summary:"文件上传"`
+	g.Meta `path:"/upload" method:"post" mime:"multipart/form-data" summary:"上传安全Playbook文档"`
 }
 
 type FileUploadRes struct {
@@ -34,7 +34,7 @@ type FileUploadRes struct {
 }
 
 type AIOpsReq struct {
-	g.Meta `path:"/ai_ops" method:"post" summary:"AI运维"`
+	g.Meta `path:"/ai_ops" method:"post" summary:"安全事件自动响应"`
 }
 
 type AIOpsRes struct {
