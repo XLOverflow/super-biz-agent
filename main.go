@@ -6,6 +6,7 @@ import (
 	"SecOpsAgent/internal/controller/chat"
 	"SecOpsAgent/internal/controller/health"
 	"SecOpsAgent/utility/common"
+	"SecOpsAgent/internal/logic/ticket"
 	"SecOpsAgent/utility/mem"
 	"SecOpsAgent/utility/middleware"
 	"log"
@@ -81,6 +82,7 @@ func main() {
 		sig := <-sigChan
 		log.Printf("Received signal %v, cleaning up resources...", sig)
 		mem.Close()
+		ticket.Close()
 		log.Println("Resource cleanup completed, server will shutdown gracefully")
 	}()
 

@@ -38,6 +38,7 @@ type AIOpsReq struct {
 }
 
 type AIOpsRes struct {
-	Result string   `json:"result"`
-	Detail []string `json:"detail"`
+	Result   string   `json:"result"`
+	Detail   []string `json:"detail"`
+	TicketNo string   `json:"ticket_no,omitempty" dc:"自动生成的工单编号"`
 }
